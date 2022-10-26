@@ -13,34 +13,45 @@ class App extends React.Component {
     cardRare: '',
     cardTrunfo: false,
     hasTrunfo: false,
-    isSaveButtonDisabled: false,
+    isSaveButtonDisabled: true,
   };
 
-  // validateButton = () => {
-  //   const {
-  //     cardName, cardDescription, cardAttr1,
-  //     cardAttr2, cardAttr3, cardImage, cardRare,
-  //   } = this.state;
-  //   const isValid = cardName.length === 0 || cardDescription.length === 0
-  //     || cardAttr1.length === 0 || cardAttr2.length === 0 || cardAttr3.length === 0
-  //     || cardImage.length === 0 || cardRare.length === 0;
-  //   this.setState({
-  //     isSaveButtonDisabled: isValid,
-  //   });
-  // };
+  validateButton = () => {
+    const {
+      cardName, cardDescription, cardAttr1,
+      cardAttr2, cardAttr3, cardImage, cardRare,
+    } = this.state;
+    const sumMax = 210;
+    const pointsMax = 90;
+    let isValid = false;
+    if (
+      (cardName.length === 0 || cardDescription.length === 0
+      || cardImage.length === 0 || cardRare.length === 0)
+      || ((Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3)) > Number(sumMax))
+      || (Number(cardAttr1) > Number(pointsMax) || Number(cardAttr1) < 0)
+      || (Number(cardAttr2) > Number(pointsMax) || Number(cardAttr2) < 0)
+      || (Number(cardAttr3) > Number(pointsMax) || Number(cardAttr3) < 0)
+    ) {
+      isValid = false;
+    } else {
+      isValid = true;
+    }
+    this.setState({
+      isSaveButtonDisabled: !isValid,
+    });
+    console.log(isValid);
+  };
 
   onInputChange = (event) => {
     const { name, value } = event.target;
-    console.log('mudou');
     this.setState(
       {
         [name]: value,
-      // },
-      // () => {
-      //   this.validateButton();
+      },
+      () => {
+        this.validateButton();
       },
     );
-    console.log(name, ':', value);
   };
 
   render() {
