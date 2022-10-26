@@ -17,6 +17,7 @@ class Form extends Component {
             type="text"
             id="name-imput"
             placeholder="Insira o nome da carta"
+            name="cardName"
             value={ cardName }
             onChange={ onInputChange }
           />
@@ -27,6 +28,7 @@ class Form extends Component {
             data-testid="description-input"
             type="textarea"
             id="description-input"
+            name="cardDescription"
             value={ cardDescription }
             onChange={ onInputChange }
           />
@@ -37,6 +39,7 @@ class Form extends Component {
             data-testid="attr1-input"
             type="number"
             id="attr1-input"
+            name="cardAttr1"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
@@ -47,6 +50,7 @@ class Form extends Component {
             data-testid="attr2-input"
             type="number"
             id="attr2-input"
+            name="cardAttr2"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
@@ -57,6 +61,7 @@ class Form extends Component {
             data-testid="attr3-input"
             type="number"
             id="attr3-input"
+            name="cardAttr3"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
@@ -67,6 +72,7 @@ class Form extends Component {
             data-testid="image-input"
             type="text"
             id="image-input"
+            name="cardImage"
             value={ cardImage }
             onChange={ onInputChange }
           />
@@ -77,6 +83,7 @@ class Form extends Component {
             data-testid="rare-input"
             type="select"
             id="rare-input"
+            name="cardRare"
             value={ cardRare }
             onChange={ onInputChange }
           >
@@ -91,6 +98,7 @@ class Form extends Component {
             data-testid="trunfo-input"
             type="checkbox"
             id="trunfo-input"
+            name="cardTrunfo"
             checked={ cardTrunfo }
             onChange={ onInputChange }
           />
