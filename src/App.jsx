@@ -16,6 +16,11 @@ class App extends React.Component {
     isSaveButtonDisabled: true,
   };
 
+  // Botão "salvar" fica disponivel quando:
+  // 1 - Os campos Nome, Descrição, Imagem e Raridade devem conter alguma informação (ou seja, os inputs não podem estar vazios).
+  // 2 - A soma dos valores dos 3 atributos (attr1-input, attr2-input e attr3-input) não pode ultrapassar o valor 210.
+  // 3 - Cada um dos três atributos pode ter no máximo 90 pontos cada.
+  // 4 - Os atributos não podem receber valores negativos.
   validateButton = () => {
     const {
       cardName, cardDescription, cardAttr1,
@@ -42,6 +47,7 @@ class App extends React.Component {
     console.log(isValid);
   };
 
+  // Escrita na tela e salvo no state os valores escritos
   onInputChange = (event) => {
     const { name, value } = event.target;
     this.setState(
@@ -49,16 +55,22 @@ class App extends React.Component {
         [name]: value,
       },
       () => {
+        // Realiza a validação do botão cada vez que alterar algo na tela
         this.validateButton();
       },
     );
+  };
+
+  // Salva as informações do state atual e limpa os campos da tela
+  onSaveButtonClick = () => {
+
   };
 
   render() {
     const {
       cardName, cardDescription, cardAttr1,
       cardAttr2, cardAttr3, cardImage, cardRare,
-      cardTrunfo, hasTrunfo, isSaveButtonDisabled, onSaveButtonClick,
+      cardTrunfo, hasTrunfo, isSaveButtonDisabled,
     } = this.state;
     return (
       <div>
@@ -74,7 +86,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
-          onSaveButtonClick={ onSaveButtonClick }
+          onSaveButtonClick={ this.onSaveButtonClick }
           onInputChange={ this.onInputChange }
         />
         <Card
