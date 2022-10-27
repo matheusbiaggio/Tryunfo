@@ -78,9 +78,8 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
     };
-
+    // Verifica se a opção de trunfo está ativa
     if (cardTrunfo === 'on') {
-      console.log('entrou no if');
       this.setState({
         // O state deck recebe o valor dos outros state para salvar a carta
         deck: deck.concat(saveCard),
@@ -120,6 +119,7 @@ class App extends React.Component {
       cardName, cardDescription, cardAttr1,
       cardAttr2, cardAttr3, cardImage, cardRare,
       cardTrunfo, hasTrunfo, isSaveButtonDisabled,
+      deck,
     } = this.state;
     return (
       <div>
@@ -148,6 +148,16 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {
+          deck.length > 0 ? (
+            deck.map((card) => (
+              <Card
+                { ...card }
+                key={ card.cardName }
+              />
+            ))
+          ) : <p> </p>
+        }
       </div>
     );
   }
