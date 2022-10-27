@@ -14,6 +14,7 @@ class App extends React.Component {
     cardTrunfo: false,
     hasTrunfo: false,
     isSaveButtonDisabled: true,
+    deck: [],
   };
 
   // Botão "salvar" fica disponivel quando:
@@ -44,7 +45,6 @@ class App extends React.Component {
     this.setState({
       isSaveButtonDisabled: !isValid,
     });
-    console.log(isValid);
   };
 
   // Escrita na tela e salvo no state os valores escritos
@@ -63,7 +63,39 @@ class App extends React.Component {
 
   // Salva as informações do state atual e limpa os campos da tela
   onSaveButtonClick = () => {
+    const {
+      cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
+      cardImage, cardRare, cardTrunfo, hasTrunfo, deck,
+    } = this.state;
+    const saveCard = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+    };
 
+    this.setState({
+      // O state deck recebe o valor dos outros state para salvar a carta
+      deck: saveCard,
+      // Resetando o state
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      hasTrunfo: false,
+      isSaveButtonDisabled: true,
+    });
+    console.log(this.state);
+    console.log(deck);
   };
 
   render() {
