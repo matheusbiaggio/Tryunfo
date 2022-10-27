@@ -6,11 +6,11 @@ class App extends React.Component {
   state = {
     cardName: '',
     cardDescription: '',
-    cardAttr1: '',
-    cardAttr2: '',
-    cardAttr3: '',
+    cardAttr1: 0,
+    cardAttr2: 0,
+    cardAttr3: 0,
     cardImage: '',
-    cardRare: '',
+    cardRare: 'normal',
     cardTrunfo: false,
     hasTrunfo: false,
     isSaveButtonDisabled: true,
@@ -81,7 +81,7 @@ class App extends React.Component {
 
     this.setState({
       // O state deck recebe o valor dos outros state para salvar a carta
-      deck: saveCard,
+      deck: deck.concat(saveCard),
       // Resetando o state
       cardName: '',
       cardDescription: '',
@@ -94,7 +94,6 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
     });
-    console.log(this.state);
     console.log(deck);
   };
 
