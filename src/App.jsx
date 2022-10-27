@@ -79,22 +79,40 @@ class App extends React.Component {
       hasTrunfo,
     };
 
-    this.setState({
-      // O state deck recebe o valor dos outros state para salvar a carta
-      deck: deck.concat(saveCard),
-      // Resetando o state
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
-      cardImage: '',
-      cardRare: 'normal',
-      cardTrunfo: false,
-      hasTrunfo: false,
-      isSaveButtonDisabled: true,
-    });
-    console.log(deck);
+    if (cardTrunfo === 'on') {
+      console.log('entrou no if');
+      this.setState({
+        // O state deck recebe o valor dos outros state para salvar a carta
+        deck: deck.concat(saveCard),
+        // Resetando o state
+        cardName: '',
+        cardDescription: '',
+        cardAttr1: 0,
+        cardAttr2: 0,
+        cardAttr3: 0,
+        cardImage: '',
+        cardRare: 'normal',
+        cardTrunfo: 'on',
+        hasTrunfo: true,
+        isSaveButtonDisabled: true,
+      });
+    } else {
+      this.setState({
+        // O state deck recebe o valor dos outros state para salvar a carta
+        deck: deck.concat(saveCard),
+        // Resetando o state
+        cardName: '',
+        cardDescription: '',
+        cardAttr1: 0,
+        cardAttr2: 0,
+        cardAttr3: 0,
+        cardImage: '',
+        cardRare: 'normal',
+        cardTrunfo: false,
+        hasTrunfo: false,
+        isSaveButtonDisabled: true,
+      });
+    }
   };
 
   render() {
